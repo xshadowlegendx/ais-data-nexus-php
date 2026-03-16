@@ -1,5 +1,9 @@
 <?php declare(strict_types=1);
 
+namespace Shadowlegend;
+
+use JsonSerializable;
+
 final class DomainEvent implements JsonSerializable
 {
     public function __construct(

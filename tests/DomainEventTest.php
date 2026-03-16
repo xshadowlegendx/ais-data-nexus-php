@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+namespace Shadowlegend;
+
 use PHPUnit\Framework\TestCase;
 
 final class DomainEventTEst extends TestCase

@@ -1,10 +1,15 @@
 <?php declare(strict_types=1);
 
+namespace Shadowlegend;
+
+use Exception;
+
+use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 
 final class AisDataNexus
 {
-    private GuzzleHttp\Client $httpClient;
+    private Client $httpClient;
 
     public function __construct(
         private string $serverUrl,
@@ -19,7 +24,7 @@ final class AisDataNexus
         private string $repoName
     )
     {
-        $this->httpClient = new GuzzleHttp\Client(['base_uri' => "$serverUrl/"]);
+        $this->httpClient = new Client(['base_uri' => "$serverUrl/"]);
     }
 
     public function endpoint(): string
