@@ -4,11 +4,14 @@ namespace Shadowlegend;
 
 final class UniqueEventId
 {
-    public function __construct(private string $val)
+    private string $val;
+
+    public function __construct(string $val)
     {
+        $this->val = $val;
     }
 
-    public function val(): string
+    public function val()
     {
         return $this->val;
     }

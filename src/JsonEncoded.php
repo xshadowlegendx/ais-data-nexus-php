@@ -4,11 +4,14 @@ namespace Shadowlegend;
 
 final class JsonEncoded
 {
-    public function __construct(private string $val)
+    private string $val;
+
+    public function __construct(string $val)
     {
+        $this->val = $val;
     }
 
-    public function val(): mixed
+    public function val()
     {
         return json_decode($this->val);
     }

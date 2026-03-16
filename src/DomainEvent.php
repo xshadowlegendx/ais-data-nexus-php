@@ -6,18 +6,31 @@ use JsonSerializable;
 
 final class DomainEvent implements JsonSerializable
 {
+    private $id;
+    private $eventType;
+    private $causationId;
+    private $correlationId;
+    private $payload;
+    private $metadata;
+
     public function __construct(
-        private UniqueEventId $id,
-        private string $eventType,
-        private string $causationId,
-        private string $correlationId,
-        private JsonEncoded $payload,
-        private ?JsonEncoded $metadata
-    )
-    {
+        UniqueEventId $id,
+        string $eventType,
+        string $causationId,
+        string $correlationId,
+        JsonEncoded $payload,
+        ?JsonEncoded $metadata
+    ) {
+        $this->id = $id;
+        $this->eventType = $eventType;
+        $this->causationId = $causationId;
+        $this->correlationId = $correlationId;
+        $this->payload = $payload;
+        $this->metadata = $metadata;
     }
 
-    public function jsonSerialize(): mixed
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize()
     {
         return [
             'id' => $this->id->val(),
@@ -25,7 +38,7 @@ final class DomainEvent implements JsonSerializable
             'causation_id' => $this->causationId,
             'correlation_id' => $this->correlationId,
             'payload' => $this->payload->val(),
-            'metadata' => $this->metadata?->val(),
+            'metadata' => $this->metadata ? $this->metadata->val() : null,
         ];
     }
 }

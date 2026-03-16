@@ -1,9 +1,8 @@
 {
   "name": "shadowlegend/ais-data-nexus",
   "type": "library",
-  "version": "0.1.5",
   "require": {
-    "php": ">=8.0",
+    "php": ">=7.0",
     "guzzlehttp/guzzle": "^7.10"
   },
   "license": "MIT",
@@ -22,6 +21,6 @@
     }
   ],
   "require-dev": {
-    "phpunit/phpunit": "^13"
+    "phpunit/phpunit": "^8"
   }
 }
