@@ -1,0 +1,26 @@
+{
+    "name": "shadowlegend/ais-data-nexus",
+    "type": "library",
+    "version": "0.1.5",
+    "require": {
+        "guzzlehttp/guzzle": "^7.10"
+    },
+    "license": "MIT",
+    "autoload": {
+        "classmap": [
+            "src/"
+        ],
+        "psr-4": {
+            "Shadowlegend\\AisDataNexus\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "shadowlegend",
+            "email": "lyheng0@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^13"
+    }
+}
