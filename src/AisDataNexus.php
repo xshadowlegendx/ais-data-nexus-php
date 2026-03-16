@@ -11,20 +11,41 @@ final class AisDataNexus
 {
     private Client $httpClient;
 
+    private string $serverUrl;
+    private string $instance;
+    private string $clientClass;
+    private string $clientSubsystem;
+    private string $clientMemberCode;
+    private string $targetClass;
+    private string $targetSubsystem;
+    private string $targetMemberCode;
+    private string $targetService;
+    private string $repoName;
+
     public function __construct(
-        private string $serverUrl,
-        private string $instance,
-        private string $clientClass,
-        private string $clientSubsystem,
-        private string $clientMemberCode,
-        private string $targetClass,
-        private string $targetSubsystem,
-        private string $targetMemberCode,
-        private string $targetService,
-        private string $repoName
-    )
-    {
-        $this->httpClient = new Client(['base_uri' => "$serverUrl/"]);
+        string $serverUrl,
+        string $instance,
+        string $clientClass,
+        string $clientSubsystem,
+        string $clientMemberCode,
+        string $targetClass,
+        string $targetSubsystem,
+        string $targetMemberCode,
+        string $targetService,
+        string $repoName
+    ) {
+        $this->serverUrl = $serverUrl;
+        $this->instance = $instance;
+        $this->clientClass = $clientClass;
+        $this->clientSubsystem = $clientSubsystem;
+        $this->clientMemberCode = $clientMemberCode;
+        $this->targetClass = $targetClass;
+        $this->targetSubsystem = $targetSubsystem;
+        $this->targetMemberCode = $targetMemberCode;
+        $this->targetService = $targetService;
+        $this->repoName = $repoName;
+
+        $this->httpClient = new Client(['base_uri' => $this->serverUrl . "/"]);
     }
 
     public function endpoint(): string
