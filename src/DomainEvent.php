@@ -2,6 +2,8 @@
 
 namespace Shadowlegend;
 
+use DateTime;
+
 use JsonSerializable;
 
 final class DomainEvent implements JsonSerializable
@@ -9,6 +11,7 @@ final class DomainEvent implements JsonSerializable
     public function __construct(
         private UniqueEventId $id,
         private string $eventType,
+        private DateTime $timestamp,
         private string $causationId,
         private string $correlationId,
         private JsonEncoded $payload,
@@ -21,6 +24,7 @@ final class DomainEvent implements JsonSerializable
     {
         return [
             'id' => $this->id->val(),
+            'timestamp' => $this->timestamp->format(DateTime::ATOM),
             'event_type' => $this->eventType,
             'causation_id' => $this->causationId,
             'correlation_id' => $this->correlationId,
